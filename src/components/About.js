@@ -1,38 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
-  const [myStyle, setStyle]= useState({
-    color: 'black',
-    backgroundColor: 'white'
-  })  
+export default function About(props) {
+//   const [myStyle, setStyle]= useState({
+//     color: 'black',
+//     backgroundColor: 'white'
+//   })  
 
-  const [btnText, setText] = useState("Enable Dark Mode")
+  let myStyle ={
+    color: props.mode==='dark'? 'white': '#042743',
+    backgroundColor: props.mode==='dark'? 'rgb(36 74 104)': 'white',
+  }
+//   const [btnText, setText] = useState("Enable Dark Mode")
 
-  const toggleStyle = ()=>{
-    if(myStyle.color==='black'){
-        setStyle({
-            color:'white',
-            backgroundColor:'black',
-            border: '1px solid white'
+//   const toggleStyle = ()=>{
+//     if(myStyle.color==='black'){
+//         setStyle({
+//             color:'white',
+//             backgroundColor:'black',
+//             border: '1px solid white'
 
-        })
-        setText('Enable Light Mode')
-    }
-    else{
-        setStyle({
-            color:'black',
-            backgroundColor:'white',
-            border: '1px solid black'
+//         })
+//         setText('Enable Light Mode')
+//     }
+//     else{
+//         setStyle({
+//             color:'black',
+//             backgroundColor:'white',
+//             border: '1px solid black'
 
-        })
-        setText('Enable Dark Mode')
+//         })
+//         setText('Enable Dark Mode')
 
-    }
-    }
+//     }
+//     }
   
   return (
-    <div className='container' style={myStyle}>
-        <h1 className='my-3'>About Us</h1>
+    <div className='container'>
+        <h1 className='my-3' style={{color: props.mode==='dark'? 'white': 'black'}}>About Us</h1>
         <div className="accordion" id="accordionExample" >
         <div className="card" style={myStyle}>
             <div className="card-header" id="headingOne">
@@ -78,9 +82,9 @@ export default function About() {
             </div>
         </div>
         </div>
-        <div className="container my-3">
+        {/* <div className="container my-3">
         <button type="button" onClick={toggleStyle} className="btn btn-primary">{btnText}</button>
-        </div>
+        </div> */}
     </div>
   )
 }
